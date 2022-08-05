@@ -21,6 +21,7 @@
         <div>
             <label for="email">Email input type : </label>
             <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
         </div>
         <div>
             <label for="url">URL input type : </label>
@@ -59,13 +60,21 @@
         else textError.textContent = "First Name is Incorrect!";
       });
 
+      const email =  document.querySelector('#email');
+      const textError1 =  document.querySelector('.email-error');
+      email.addEventListener('input',function(){
+        let emailIdRegex = RegExp('[a-z][a-z A-Z 0-9]+[@][a-z]+[.][a-z]{2,5}')
+        if(emailIdRegex.test(email.value))
+        textError1.textContent = "";
+        else textError1.textContent = "Email Id is Incorrect!";
+      });
+
       const salary = document.querySelector('#salary');
       const output = document.querySelector('.salary-output');
       output.textContent = salary.value; 
       salary.addEventListener('input',function(){
         output.textContent = salary.value;
       }); 
-
     </script>
 </body>
 </html> 
